@@ -7,7 +7,8 @@ import type {
   ModalityType 
 } from '../types';
 
-const API_BASE = 'http://localhost:8000';
+const rawApiBase = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8000';
+const API_BASE = rawApiBase.endsWith('/') ? rawApiBase.slice(0, -1) : rawApiBase;
 
 export async function searchVideos(
   query: string, 
